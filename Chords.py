@@ -26,6 +26,7 @@ class AlternatingChord(Chord):
         self.pattern = pattern
         self.iterations = iterations
     def generate_intervals(self):
+        self.intervals = []
         for i in range(self.iterations):
             for p in self.pattern:
                 self.intervals.append(p)

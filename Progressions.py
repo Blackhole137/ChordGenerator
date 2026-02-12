@@ -7,13 +7,16 @@ class Progression():
         self.root_shifts = []
         self.progression = []
     def generate_progression(self):
+        self.progression = []
         for shift in self.root_shifts:
             chord = copy.deepcopy(self.chord_template)
-            chord.root = self.root + shift
+            template_root = chord.root
+            chord.root = template_root + self.root + shift
             chord.generate_chord()
             self.progression.append(chord)
-    def display_progression(self):
+    def __str__(self):
+        result = []
         for chord in self.progression:
-            for note in chord.chord:
-                print(note, end=' ')
-            print('\n')
+            chord_str = ' '.join(str(note) for note in chord.chord)
+            result.append(chord_str)
+        return '\n'.join(result)
